@@ -33,9 +33,6 @@ double getBoundM(int length, double alpha, double beta) {
 
 // [[Rcpp::export]]
 NumericVector simulateBetaDistribution(SEXP alpha, SEXP beta, SEXP nSim) {
-  Environment stats("package:stats");
-  Function f = stats["optimize"];
-  
   auto alpha_ = Rcpp::as<double>(alpha);
   auto beta_ = Rcpp::as<double>(beta);
   auto noOfSim = Rcpp::as<int>(nSim);
