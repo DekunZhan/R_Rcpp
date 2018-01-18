@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <numeric>
 #include <iterator>
+#include <functional>
 using namespace Rcpp;
 using namespace boost::math;
 using namespace std;
@@ -37,9 +38,9 @@ NumericVector simulateBetaDistribution(SEXP alpha, SEXP beta, SEXP nSim) {
   
   auto alpha_ = Rcpp::as<double>(alpha);
   auto beta_ = Rcpp::as<double>(beta);
-  long noOfSim = Rcpp::as<int>(nSim);
+  auto noOfSim = Rcpp::as<int>(nSim);
 
-  double boundM = getBoundM(noOfSim, alpha_, beta_);
+  auto boundM = getBoundM(noOfSim, alpha_, beta_);
   
   vector<double> rUniforms(noOfSim);
   generateUniformRealNumbers(rUniforms, 0.0, boundM);
